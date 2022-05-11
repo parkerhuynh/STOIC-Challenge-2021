@@ -1,0 +1,8 @@
+{
+  "preprocess_dir": "/scratch/",
+  "num_workers": 4,
+  "lr": 0.00004,
+  "epochs": 25,
+  "batch_size": 2,
+  "models": ["densenet201", "densenet169", "densenet121"]
+}
