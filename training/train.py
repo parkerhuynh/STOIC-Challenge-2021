@@ -4,6 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from ctdataset import  DataGenerator
 from config import get_config
+from tensorflow.keras import models
 
 import efficientnet_3D.tfkeras as efn 
 from classification_models_3D.tfkeras import Classifiers  
