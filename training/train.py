@@ -79,7 +79,9 @@ def train(config, train_ds, valid_ds, valid_ds_severe, target, artifact_dir):
             
             print("Creating the model")
             model =  Network(model_name = model_name)
-            
+            print(f" load model: /opt/train/algorithm/{model_name}_{target}.h5")
+            model = models.load_model(f"/opt/train/algorithm/{model_name}_{target}.h5")
+            print("Done")
             auc = tf.keras.metrics.AUC(name='auc')
             optimizer = tf.keras.optimizers.Adam(learning_rate = config["lr"])
             
