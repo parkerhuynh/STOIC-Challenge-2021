@@ -3,6 +3,7 @@
 # or a different PYTORCH (https://hub.docker.com/r/pytorch/pytorch/) base image
 FROM tensorflow/tensorflow
 RUN apt-get update
+RUN apt-get install -y wget
 RUN groupadd -r train && useradd -m --no-log-init -r -g train train
 
 RUN mkdir -p /opt/train /input /output \
@@ -29,7 +30,12 @@ COPY --chown=train:train train.py /opt/train/
 COPY --chown=train:train algorithm/ /opt/train/algorithm/
 COPY --chown=train:train config/ /opt/train/config/
 
+RUN wget https://github.com/parkerhuynh/STOIC-Challenge-2021/releases/download/v0.1.0/densenet201_proSevere.h5 -O /opt/train/algorithm/densenet201_proSevere.h5
+RUN wget https://github.com/parkerhuynh/STOIC-Challenge-2021/releases/download/v0.1.0/densenet169_proSevere.h5 -O /opt/train/algorithm/densenet169_proSevere.h5
+RUN wget https://github.com/parkerhuynh/STOIC-Challenge-2021/releases/download/v0.1.0/densenet121_proSevere.h5 -O /opt/train/algorithm/densenet121_proSevere.h5
+
+RUN wget https://github.com/parkerhuynh/STOIC-Challenge-2021/releases/download/v0.1.0/densenet201_proCOVID.h5 -O /opt/train/algorithm/densenet201_proCOVID.h5
+RUN wget https://github.com/parkerhuynh/STOIC-Challenge-2021/releases/download/v0.1.0/densenet169_proCOVID.h5 -O /opt/train/algorithm/densenet169_proCOVID.h5
+RUN wget https://github.com/parkerhuynh/STOIC-Challenge-2021/releases/download/v0.1.0/densenet121_proCOVID.h5 -O /opt/train/algorithm/densenet121_proCOVID.h5
+
 ENTRYPOINT python -m main $0 $@
-
-
-
