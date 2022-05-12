@@ -5,5 +5,5 @@
   "epochs": 15,
   "batch_size": 2,
   "models": ["densenet201"],
-  #"models": ["densenet201", "densenet169", "densenet121"]
 }
+
