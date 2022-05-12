@@ -22,9 +22,9 @@ def get_datasets(data_dir, config, target):
     df_train, df_valid = train_test_split(df, test_size=0.2, random_state=23)
     df_valid_severe = df_valid[df_valid["probCOVID"] == 1]
     
-    df_train = df_train[:4]
-    df_valid = df_valid[:4]
-    df_valid_severe = df_valid_severe[:4]
+    #df_train = df_train[:4]
+    #df_valid = df_valid[:4]
+    #df_valid_severe = df_valid_severe[:4]
     train_generator = DataGenerator(df_train, target, config["preprocess_dir"] , image_dir,  batch_size = config["batch_size"], augment = True)
     val_generator = DataGenerator(df_valid,  target, config["preprocess_dir"] , image_dir,  config["batch_size"], augment = False)
     val_generator_severe = DataGenerator(df_valid_severe, target, config["preprocess_dir"] , image_dir,  config["batch_size"], augment = False)
