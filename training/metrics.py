@@ -16,6 +16,6 @@ class Metric(keras.callbacks.Callback):
         self.output["val_loss"].append(val_loss)
         self.output["val_auc"].append(val_auc)
         self.output["val_acc"].append(val_acc)
-        if val_auc >= self.max_auc:
+        if val_auc > self.max_auc:
             self.max_auc = val_auc
             self.model.save(f"{self.artifact_dir}/{self.model_name}_{self.target }.h5")
