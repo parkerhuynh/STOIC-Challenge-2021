@@ -44,10 +44,14 @@ class StoicAlgorithm(MultiClassAlgorithm):
         onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
         severe_files = [f for f in onlyfiles if f[-9:] == "Severe.h5"]
         covid_files =  [f for f in onlyfiles if f[-8:] == "COVID.h5"]
+        print(severe_files)
+        print(covid_files )
+        
         
         #load model and predictcd 
         prob_covid = 0
         for covid_file in covid_files:
+            print(f"./artifact/{covid_file}")
             covid_model = models.load_model(f"./artifact/{covid_file}")
             prob_covid_i = covid_model.predict(input_image)[0][0].astype(float)
             prob_covid += prob_covid_i
@@ -55,6 +59,7 @@ class StoicAlgorithm(MultiClassAlgorithm):
         
         prob_severe = 0
         for severe_file in severe_files:
+            print(f"./artifact/{severe_file}")
             severe_model = models.load_model(f"./artifact/{severe_file}")
             prob_severe_i = severe_model.predict(input_image)[0][0].astype(float)
             prob_severe += prob_severe_i
